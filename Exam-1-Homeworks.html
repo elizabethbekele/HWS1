@@ -409,6 +409,90 @@ max_puppies</code></pre>
 actual_max_puppies</code></pre>
 <pre><code>## [1] 0</code></pre>
 </div>
+<div id="homework-3" class="section level1">
+<h1>Homework 3</h1>
+<ol style="list-style-type: decimal">
+<li>Create a vector <code>even</code> that holds the even numbers from 1 to 100</li>
+<li>Using the <code>all()</code> function and <code>%%</code> (modulo) operator, confirm that all of the numbers in your <code>even</code> vector are even</li>
+</ol>
+<pre class="r"><code>#Problem 1
+even &lt;- seq(from = 2, to = 102, by = 2)
+
+#Problem 2
+all(even %% 2 == 0)</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Create a vector <code>phone_numbers</code> that contains the numbers 2, 8, 1, 3, 3, 0, 8, 0, 0, 4</li>
+<li>Create a vector <code>prefix</code> that has the first three elements of <code>phone_numbers</code></li>
+<li>Create a vector <code>small</code> that has the values of <code>phone_numbers</code> that are less than or equal to 5</li>
+<li>Create a vector <code>large</code> that has the values of <code>phone_numbers</code> that are strictly greater than 5</li>
+<li>Replace the values in <code>phone_numbers</code> that are larger than 5 with the number 5</li>
+<li>Replace every odd-numbered value in <code>phone_numbers</code> with the number 0</li>
+</ol>
+<blockquote>
+<p>For question 4, please don’t just do 2,8,1, use indexing! For questions 5 through 8, you should use not use “hard coding” for the indexes.</p>
+</blockquote>
+<pre class="r"><code>#Problem 3
+phone_numbers &lt;- c(2, 8, 1, 3, 3, 0, 8, 0, 0, 4)
+
+#Problem 4
+prefix &lt;- phone_numbers[1:3]
+prefix</code></pre>
+<pre><code>## [1] 2 8 1</code></pre>
+<pre class="r"><code>#Problem 5
+small &lt;- phone_numbers[phone_numbers &lt;= 5]
+small</code></pre>
+<pre><code>## [1] 2 1 3 3 0 0 0 4</code></pre>
+<pre class="r"><code>#Problem 6
+large &lt;- phone_numbers[phone_numbers &gt; 5]
+large</code></pre>
+<pre><code>## [1] 8 8</code></pre>
+<pre class="r"><code>#Problem 7
+phone_numbers[phone_numbers &gt; 5] &lt;- 5
+phone_numbers</code></pre>
+<pre><code>##  [1] 2 5 1 3 3 0 5 0 0 4</code></pre>
+<pre class="r"><code>#Problem 8
+phone_numbers[phone_numbers %% 2 != 0] &lt;- 0
+phone_numbers</code></pre>
+<pre><code>##  [1] 2 0 0 0 0 0 0 0 0 4</code></pre>
+<ol start="9" style="list-style-type: decimal">
+<li>Create a vector of 100 simulated dice rolls called <code>fifty_rolls_1</code></li>
+<li>Create a second vector of 100 simulated dice rolls called <code>fifty_rolls_2</code></li>
+<li>If you pretend these two die are rolled at the same time, find how many of the 100 two-dice rolls are doubles. (doubles are when the two die have the same number)</li>
+</ol>
+<pre class="r"><code># this function makes it so that your &quot;random&quot; number generator is at the same spot as mine. 
+set.seed(102389) ## leave this here to keep the randomness consistent
+
+#Problem 9
+fifty_rolls_1 &lt;- sample(1:6, 100, replace = T)
+fifty_rolls_1</code></pre>
+<pre><code>##   [1] 1 3 6 6 4 6 5 2 3 2 3 5 5 6 1 6 6 2 4 3 5 6 2 4 4 6 2 4 3 5 2 4 1 5 6 1 6
+##  [38] 4 2 6 3 6 5 4 4 5 5 6 4 6 2 2 4 4 3 2 3 4 6 5 4 6 5 4 5 1 1 3 3 5 2 4 2 6
+##  [75] 1 5 6 1 3 3 6 2 3 1 6 4 6 6 5 3 6 3 6 6 5 2 5 5 6 4</code></pre>
+<pre class="r"><code>#Problem 10
+fifty_rolls_2 &lt;- sample(1:6, 100, replace = T)
+fifty_rolls_2</code></pre>
+<pre><code>##   [1] 1 4 4 3 3 1 1 6 3 3 3 5 1 3 5 1 3 4 4 1 1 2 4 4 6 5 4 3 4 6 1 3 3 6 2 3 4
+##  [38] 6 2 3 1 2 3 6 6 5 2 4 5 6 2 5 5 2 6 6 3 6 4 6 5 5 1 3 3 2 4 3 1 2 3 3 6 3
+##  [75] 2 1 2 6 1 4 5 2 1 2 1 3 3 3 2 6 5 1 3 6 1 6 3 4 1 4</code></pre>
+<pre class="r"><code>#Problem 11
+length(fifty_rolls_1[fifty_rolls_1 == fifty_rolls_2])</code></pre>
+<pre><code>## [1] 15</code></pre>
+<p>Extra Credit, 5 points:</p>
+<ol start="12" style="list-style-type: decimal">
+<li>Make a function that does 9, 10, and 11 together for you, and returns the number of doubles. (Note: functions don’t have to have input arguments!)</li>
+</ol>
+<pre class="r"><code>set.seed(102389)
+
+combo &lt;- function(){
+  fifty_rolls_1 &lt;- sample(1:6, 100, replace = T)
+  fifty_rolls_2 &lt;- sample(1:6, 100, replace = T)
+  return (length(fifty_rolls_1[fifty_rolls_1 == fifty_rolls_2]))
+}
+
+combo()</code></pre>
+<pre><code>## [1] 15</code></pre>
+</div>
 
 
 
