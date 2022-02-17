@@ -1,1 +1,67 @@
+---
+title: "Exam 1 Prep"
+author: "Elizabeth Bekele"
+date: "DATA 2401"
+output: html_document
+---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# Homework 2
+1. Create a variable `hometown` that stores the city you consider your hometown as a string. 
+
+```{r}
+hometown <- 'Houston'
+hometown
+```
+
+2. Assign your name to the variable `my_name`
+```{r}
+my_name <- 'Liz'
+my_name
+```
+
+3. Assign your height (in inches) to a variable `my_height`
+```{r}
+my_height <- 66
+my_height
+```
+
+4. Create a variable `puppies` equal to the number of puppies you'd like to have
+```{r}
+puppies <- 3
+puppies
+```
+
+5. Create a variable `puppy_price`, which is how much you think a puppy costs
+```{r}
+puppy_price <- 1500
+puppy_price
+```
+
+6. Create a variable `total_cost` that has the total cost of all of your puppies (use the variables you created in the previous questions)
+```{r}
+total_cost <- puppies * puppy_price
+total_cost
+```
+
+7. Create a boolean variable `too_expensive`, that is set to TRUE if the cost is greater than $1,000 (use your variables created in the previous questions)
+```{r}
+too_expensive <- total_cost > 1000
+too_expensive
+```
+
+8. Create a variable `max_puppies`, which is the number of puppies you can afford for $1,000
+```{r}
+max_puppies <- 1000/total_cost
+max_puppies
+```
+
+9.  We can't have partial puppies. Round `max_puppies` down to a whole number (you might use a function called `floor`, type `?floor` in your R console for more information), save that as a new variable `actual_max_puppies`
+```{r}
+actual_max_puppies <- floor(max_puppies)
+actual_max_puppies
+```
