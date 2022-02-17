@@ -9,6 +9,100 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+# Homework 1 
+## Mainly plotting, stuff 
+### Load packages
+
+```{r load-packages, message=FALSE}
+library(tidyverse)
+library(datasauRus)
+```
+
+
+### Exercise 1
+
+There are 1846 rows and 3 variables: dataset (indicates which dataset the data are from), x (x-values), y (y-values). 
+
+### Exercise 2
+Below is a plot of the dino set. The correlation coefficient, r, is -0.064. However, we would not normally calculate this since the plot is not linear.
+
+First let's plot the data in the dino dataset:
+
+```{r plot-dino, fig.height=3, fig.width=6}
+dino_data <- datasaurus_dozen %>%
+  filter(dataset == "dino")
+ggplot(data = dino_data, mapping = aes(x = x, y = y)) +
+  geom_point()
+```
+
+And next calculate the correlation between `x` and `y` in this dataset:
+
+```{r cor-dino}
+dino_data %>%
+  summarize(r = cor(x, y))
+```
+
+### Exercise 3
+
+Plot the x and y cordinates of the star data set:
+
+
+```{r plot-star, fig.height=5, fig.width=7}
+star_data <- datasaurus_dozen %>%
+  filter(dataset == "star")
+ggplot(data = star_data, mapping = aes(x = x, y = y)) +
+  geom_point()
+```
+
+Calculate the correlation between x and y in the star data set:
+ 
+```{r cor-star}
+star_data %>%
+  summarize(r = cor(x, y))
+```
+
+The r of star (-0.063) is greater than the r of dino (-0.064).
+
+
+### Exercise 4
+
+Plot the x and y coordinates of the circle data set:
+
+```{r plot - circle, fig.height=5, fig.width=7}
+circle_data <- datasaurus_dozen %>%
+  filter(dataset == "circle")
+ggplot(data = circle_data, mapping = aes(x = x, y = y)) +
+  geom_point()
+```
+
+Calculate the correlation coefficient of circle data:
+
+```{r cor - circle}
+circle_data %>%
+  summarize(r = cor(x, y))
+```
+
+The r of circle (-0.068) is less than the r of dino (-0.064).
+
+### Exercise 5
+
+Plot all data sets at once and calculate their summary correlation coefficients. 
+
+```{r plot - all, fig.height=10, fig.width=10}
+ggplot(datasaurus_dozen, aes(x = x, y = y, color = dataset))+
+  geom_point()+
+  facet_wrap(~ dataset, ncol = 3) + # facet the dataset variable, in 3 cols 
+  theme(legend.position = "none")
+```
+
+Now, calculate the summary correlation coefficients
+
+``` {r - coef- all}
+datasaurus_dozen %>%
+  group_by(dataset) %>%
+  summarize(r = cor(x, y)) %>%
+  print(13)
+```
 
 # Homework 2
 1. Create a variable `hometown` that stores the city you consider your hometown as a string. 
